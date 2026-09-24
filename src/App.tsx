@@ -1,5 +1,5 @@
-import { WorldMap } from '@/components/WorldMap/WorldMap';
+import { MapScreen } from './screens/MapScreen/MapScreen';
 
 export default function App() {
-	return <WorldMap />;
+	return <MapScreen />;
 }

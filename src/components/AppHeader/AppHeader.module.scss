@@ -1,3 +1,15 @@
 .header {
-	font: optional;
+	position: absolute;
+	top: 12px;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	text-align: center;
+
+	color: white;
+
+	h1 {
+		font-size: 42px;
+		font-weight: 600;
+	}
 }
