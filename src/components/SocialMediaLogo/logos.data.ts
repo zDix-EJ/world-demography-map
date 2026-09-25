@@ -1,6 +1,6 @@
-import { SocialLink } from '@/types/types';
+import { ISocialLink } from '@/types/types';
 
-export const SOCIAL_LINKS: SocialLink[] = [
+export const SOCIAL_LINKS: ISocialLink[] = [
 	{
 		url: 'https://music.yandex.com/album/43547354',
 		logo: '/social-icons/yandex-music.svg',

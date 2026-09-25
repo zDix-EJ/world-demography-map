@@ -9,7 +9,10 @@ interface Props {
 export function SocialMediaLogo({ logo, alt, url }: Props) {
 	return (
 		<div className={styles.logoBox}>
-			<a href={url}>
+			<a
+				href={url}
+				target="_blank"
+			>
 				<img
 					src={logo}
 					alt={alt}
