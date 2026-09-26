@@ -1,4 +1,15 @@
-export const mockPopulationData = {
+interface IDataCountry {
+	id: string;
+	name: string;
+	values: Record<number, number | null>;
+}
+
+export interface IPopulationData {
+	years: number[];
+	data: IDataCountry[];
+}
+
+export const mockPopulationData: IPopulationData = {
 	years: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
 	data: [
 		{

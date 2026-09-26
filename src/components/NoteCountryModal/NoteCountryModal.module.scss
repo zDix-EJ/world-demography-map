@@ -1,0 +1,32 @@
+//Анимация появления
+@keyframes showNote {
+	0% {
+		opacity: 0;
+		transform: translateY(-25px) scale(0.95);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px) scale(1);
+	}
+}
+
+.wrapper {
+	border: 1.5px solid #abe4ff;
+	border-radius: 12px;
+	background-color: #26517b;
+
+	bottom: 200px;
+	left: 50%;
+	position: absolute;
+	z-index: 1;
+	translate: -50%;
+
+	animation: showNote 0.3s;
+
+	p {
+		text-align: center;
+		font-size: 24px;
+		padding: 8px 12px;
+		color: #fdfdfd;
+	}
+}

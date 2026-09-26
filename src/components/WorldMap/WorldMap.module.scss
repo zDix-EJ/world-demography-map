@@ -4,4 +4,10 @@
 	overflow: hidden;
 
 	background-color: #03263c;
+
+	position: relative;
+}
+
+.country {
+	transition: all 0.3s ease-in-out;
 }
