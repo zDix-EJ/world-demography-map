@@ -23,7 +23,7 @@
 	z-index: 1;
 	translate: -50%;
 
-	animation: showNote 0.3s;
+	animation: showNote 0.3s ease forwards;
 
 	h1 {
 		text-align: center;
