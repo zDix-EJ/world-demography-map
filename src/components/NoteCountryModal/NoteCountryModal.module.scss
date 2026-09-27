@@ -17,11 +17,13 @@
 
 	padding: 8px 12px;
 
-	bottom: 200px;
+	bottom: 152px;
 	left: 50%;
 	position: absolute;
 	z-index: 1;
 	translate: -50%;
+
+	pointer-events: none;
 
 	animation: showNote 0.3s ease forwards;
 
