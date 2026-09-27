@@ -1,26 +1,20 @@
-import { ICountry } from '@/types/country';
+import { ICountry, ICurrentCountry } from '@/types/country';
+import { getDataInYearById } from '@/utils/getDataInYearById';
 import { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import geography from 'world-atlas/countries-110m.json'; // Карта
 import { NoteCountryModal } from '../NoteCountryModal/NoteCountryModal';
 import styles from './WorldMap.module.scss';
-import { IPopulationData, mockPopulationData } from './country.data';
+import { mockPopulationData } from './country.data';
 
-// дефолтненый цвет карты "#26517b"
-interface Props {}
+//TODO: Определиться с эффектом при наведении, что бы было интуитивно понятно и не вычурно
 
-interface ICurrentCountry {
-	id: string;
-	properties: {
-		name: string;
-	};
-	rsmKey: string;
+interface Props {
+	sellectYear: number;
 }
 
-export function WorldMap({}: Props) {
+export function WorldMap({ sellectYear }: Props) {
 	const [isHover, setIsHover] = useState<ICountry | null>(null);
-
-	const sellectYear = 2023;
 
 	const colorSteps = [
 		{ max: 1_000_000, color: '#16324a' },
@@ -31,19 +25,8 @@ export function WorldMap({}: Props) {
 		{ max: 300_000_000, color: '#7eb6e0' }
 	];
 
-	const getPopulationInYearById = (
-		countryesData: IPopulationData,
-		geo: ICurrentCountry
-	) => {
-		const selectedCountry = countryesData.data.find(
-			(countryesData) => countryesData.id === geo.id
-		);
-		const populationOnYear = selectedCountry?.values[sellectYear];
-		return populationOnYear;
-	};
-
 	const colorByPopulation = (population: number | null | undefined) => {
-		if (population == undefined || null) return '#0c1b28';
+		if (population == null) return '#0c1b28';
 		const needStap = colorSteps.find((color) => population < color.max);
 		const color = needStap?.color ?? '#d7f1ff';
 		return color;
@@ -69,7 +52,7 @@ export function WorldMap({}: Props) {
 									key={geo.rsmKey}
 									geography={geo}
 									fill={colorByPopulation(
-										getPopulationInYearById(mockPopulationData, geo)
+										getDataInYearById(mockPopulationData, geo, sellectYear)
 									)}
 									stroke="#abe4ff"
 									strokeWidth={0.5}
@@ -79,9 +62,9 @@ export function WorldMap({}: Props) {
 									style={{
 										default: { outline: 'none' },
 										hover: {
-											fill: '#4784bf',
+											// fill: '#4784bf',
 											transform: 'translate(0, -2px)',
-											strokeWidth: 1.2
+											strokeWidth: 1.4
 										},
 										pressed: { outline: 'none' }
 									}}
@@ -94,7 +77,12 @@ export function WorldMap({}: Props) {
 					}
 				</Geographies>
 			</ComposableMap>
-			{isHover ? <NoteCountryModal isHoverCountry={isHover} /> : null}
+			{isHover ? (
+				<NoteCountryModal
+					isHoverCountry={isHover}
+					sellectYear={sellectYear}
+				/>
+			) : null}
 		</div>
 	);
 }

@@ -15,6 +15,8 @@
 	border-radius: 12px;
 	background-color: #26517b;
 
+	padding: 8px 12px;
+
 	bottom: 200px;
 	left: 50%;
 	position: absolute;
@@ -23,9 +25,15 @@
 
 	animation: showNote 0.3s;
 
-	p {
+	h1 {
 		text-align: center;
 		font-size: 24px;
+		color: #fdfdfd;
+	}
+
+	p {
+		font-size: 18px;
+		text-wrap-mode: wrap;
 		padding: 8px 12px;
 		color: #fdfdfd;
 	}

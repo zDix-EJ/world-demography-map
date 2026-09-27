@@ -1,5 +1,76 @@
 .lineBox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+}
+
+.lineLabel {
+	font-size: 38px;
+	font-weight: 500;
+	color: #a7d9ff;
 }
 
 .line {
+	//Сброс стилей range
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	background: transparent;
+	cursor: pointer;
+}
+
+@mixin thumb-styles {
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: #0c1b28; // Синий цвет
+	border: 2px solid #ffffff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	transition: transform 0.1s ease;
+	cursor: pointer;
+
+	&:hover {
+		transform: scale(1.15);
+	}
+}
+
+@mixin track-styles {
+	width: 100%;
+	height: 4px;
+	background: #dee2e6;
+	border-radius: 2px;
+}
+
+.line {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	background: transparent;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+	}
+
+	// Стили для бегунка (Thumb)
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		margin-top: -6px;
+		@include thumb-styles;
+	}
+
+	&::-moz-range-thumb {
+		@include thumb-styles;
+	}
+
+	// Стили для дорожки (Track)
+	&::-webkit-slider-runnable-track {
+		@include track-styles;
+	}
+
+	&::-moz-range-track {
+		@include track-styles;
+	}
 }
