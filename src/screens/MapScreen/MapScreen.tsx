@@ -1,5 +1,6 @@
 import { AppHeader } from '@/components/AppHeader/AppHeader';
 import { ChangeYears } from '@/components/ChangeYears/ChangeYears';
+import { HudPanel } from '@/components/HudPanel/HudPanel';
 import { SocialMedia } from '@/components/SocialMedia/SocialMedia';
 import { WorldMap } from '@/components/WorldMap/WorldMap';
 import { useState } from 'react';
@@ -13,6 +14,7 @@ export function MapScreen({}: Props) {
 	return (
 		<div className={style.screen}>
 			<AppHeader />
+			<HudPanel />
 			<WorldMap sellectYear={year} />
 			<SocialMedia />
 			<ChangeYears

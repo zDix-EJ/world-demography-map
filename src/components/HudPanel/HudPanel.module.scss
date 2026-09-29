@@ -1,2 +1,18 @@
 .hudPanel {
+	display: flex;
+	justify-content: space-between;
+
+	width: 100%;
+
+	top: 87px;
+	left: 24px;
+	bottom: 168px;
+	z-index: 1;
+	position: absolute;
+
+	pointer-events: none;
+
+	> * {
+		pointer-events: auto;
+	}
 }

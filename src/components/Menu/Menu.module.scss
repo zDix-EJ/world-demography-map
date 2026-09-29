@@ -1,0 +1,41 @@
+.menu {
+	display: flex;
+	justify-content: space-evenly; //TODO: Мб временно, до завершения компонента
+	flex-direction: column;
+
+	width: 328px;
+	height: 100%;
+	padding: 8px;
+
+	border-radius: 12px;
+	border: 1.5px solid #dee2e6;
+
+	background-color: #0c1b28;
+
+	h1 {
+		font-size: 36px;
+		color: #dee2e6;
+		text-align: center;
+		margin: 6px;
+	}
+
+	p {
+		font-size: 24px;
+		color: #dee2e6;
+		text-align: center;
+		margin: 6px;
+	}
+}
+.separator {
+	border: none;
+	border-top: 2px solid #dee2e62b;
+	margin: 6px auto;
+	width: 80%;
+}
+
+.buttonBox {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 8px;
+}
