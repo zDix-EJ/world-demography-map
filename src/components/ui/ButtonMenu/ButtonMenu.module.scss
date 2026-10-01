@@ -1,0 +1,36 @@
+//TODO: Сделать active #4784bf
+
+.button {
+	padding: 8px 12px;
+	width: 198px;
+
+	border: 2px solid #0d3454;
+	border-radius: 18px;
+
+	background-color: #26507ba9;
+	backdrop-filter: blur(10px);
+	color: #dee2e6;
+
+	transition:
+		background-color 0.3s ease-in-out,
+		border-color 0.3s ease-in-out,
+		transform 0.3s ease-in-out;
+
+	&:hover {
+		background-color: #4784bf;
+		border: 2px solid #dee2e6;
+		scale: 1.05;
+	}
+
+	&:active {
+		background-color: #4783bf69;
+		border: 2px solid #dee2e66a;
+		scale: 0.98;
+	}
+
+	&.active {
+		background-color: #4783bfa9;
+		border: 2px solid #dee2e66a;
+		scale: 1;
+	}
+}

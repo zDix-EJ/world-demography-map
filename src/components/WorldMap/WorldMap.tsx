@@ -1,33 +1,28 @@
 import { ICountry, ICurrentCountry } from '@/types/country';
+import { TIndicator } from '@/types/data';
 import { getDataInYearById } from '@/utils/getDataInYearById';
 import { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import geography from 'world-atlas/countries-110m.json'; // Карта
 import { NoteCountryModal } from '../NoteCountryModal/NoteCountryModal';
 import styles from './WorldMap.module.scss';
-import { mockPopulationData } from './country.data';
+import { COLOR_STEPS, DATASET } from './country.data';
 
 //TODO: Определиться с эффектом при наведении, что бы было интуитивно понятно и не вычурно
 
 interface Props {
 	sellectYear: number;
+	indicator: TIndicator;
 }
 
-export function WorldMap({ sellectYear }: Props) {
+export function WorldMap({ sellectYear, indicator }: Props) {
 	const [isHover, setIsHover] = useState<ICountry | null>(null);
-
-	const colorSteps = [
-		{ max: 1_000_000, color: '#16324a' },
-		{ max: 10_000_000, color: '#1c4060' },
-		{ max: 30_000_000, color: '#26517b' },
-		{ max: 60_000_000, color: '#326896' },
-		{ max: 100_000_000, color: '#4784bf' },
-		{ max: 300_000_000, color: '#7eb6e0' }
-	];
 
 	const colorByPopulation = (population: number | null | undefined) => {
 		if (population == null) return '#0c1b28';
-		const needStap = colorSteps.find((color) => population < color.max);
+		const needStap = COLOR_STEPS[indicator].find(
+			(color) => population < color.max
+		);
 		const color = needStap?.color ?? '#d7f1ff';
 		return color;
 	};
@@ -52,7 +47,7 @@ export function WorldMap({ sellectYear }: Props) {
 									key={geo.rsmKey}
 									geography={geo}
 									fill={colorByPopulation(
-										getDataInYearById(mockPopulationData, geo, sellectYear)
+										getDataInYearById(DATASET[indicator], geo, sellectYear)
 									)}
 									stroke="#abe4ff"
 									strokeWidth={0.5}
@@ -79,6 +74,7 @@ export function WorldMap({ sellectYear }: Props) {
 			</ComposableMap>
 			{isHover ? (
 				<NoteCountryModal
+					indicator={indicator}
 					isHoverCountry={isHover}
 					sellectYear={sellectYear}
 				/>

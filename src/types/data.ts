@@ -1,3 +1,9 @@
+export type TIndicator =
+	| 'population'
+	| 'fertility'
+	| 'deathRate'
+	| 'lifeExpectancy';
+
 export interface IPopulationData {
 	years: number[];
 	data: IDataCountry[];

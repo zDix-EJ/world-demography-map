@@ -1,12 +1,29 @@
+import { TIndicator } from '@/types/data';
+import { useState } from 'react';
 import { Menu } from '../Menu/Menu';
+import { ArrowOpenMenu } from '../ui/ArrowOpenMenu/ArrowOpenMenu';
 import styles from './HudPanel.module.scss';
 
-interface Props {}
+interface Props {
+	indicator: TIndicator;
+	setIndicator: (indicator: TIndicator) => void;
+}
 
-export function HudPanel({}: Props) {
+export function HudPanel({ setIndicator, indicator }: Props) {
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+
 	return (
 		<div className={styles.hudPanel}>
-			<Menu />
+			<Menu
+				isOpen={isOpen}
+				setIsOpen={setIsOpen}
+				indicator={indicator}
+				setIndicator={setIndicator}
+			/>
+			<ArrowOpenMenu
+				isOpen={isOpen}
+				setIsOpen={setIsOpen}
+			/>
 		</div>
 	);
 }

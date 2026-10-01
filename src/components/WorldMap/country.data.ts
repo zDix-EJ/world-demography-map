@@ -1,4 +1,4 @@
-import { IPopulationData } from '@/types/data';
+import { IPopulationData, TIndicator } from '@/types/data';
 
 export const mockPopulationData: IPopulationData = {
 	years: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
@@ -622,4 +622,212 @@ export const mockLifeExpectancyData: IPopulationData = {
 			}
 		}
 	]
+};
+export const mockFertilityData: IPopulationData = {
+	years: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
+	data: [
+		{
+			id: '643',
+			name: 'Russia',
+			values: {
+				2019: 1.5,
+				2020: 1.44,
+				2021: 1.49,
+				2022: 1.42,
+				2023: 1.41,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '840',
+			name: 'United States of America',
+			values: {
+				2019: 1.71,
+				2020: 1.64,
+				2021: 1.66,
+				2022: 1.67,
+				2023: 1.62,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '156',
+			name: 'China',
+			values: {
+				2019: 1.7,
+				2020: 1.28,
+				2021: 1.16,
+				2022: 1.18,
+				2023: 1.0,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '356',
+			name: 'India',
+			values: {
+				2019: 2.16,
+				2020: 2.09,
+				2021: 2.03,
+				2022: 2.01,
+				2023: 1.98,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '076',
+			name: 'Brazil',
+			values: {
+				2019: 1.72,
+				2020: 1.65,
+				2021: 1.63,
+				2022: 1.62,
+				2023: 1.6,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '276',
+			name: 'Germany',
+			values: {
+				2019: 1.54,
+				2020: 1.53,
+				2021: 1.58,
+				2022: 1.46,
+				2023: 1.35,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '250',
+			name: 'France',
+			values: {
+				2019: 1.86,
+				2020: 1.82,
+				2021: 1.8,
+				2022: 1.79,
+				2023: 1.64,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '392',
+			name: 'Japan',
+			values: {
+				2019: 1.36,
+				2020: 1.33,
+				2021: 1.3,
+				2022: 1.26,
+				2023: 1.2,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '826',
+			name: 'United Kingdom',
+			values: {
+				2019: 1.63,
+				2020: 1.56,
+				2021: 1.55,
+				2022: 1.49,
+				2023: 1.44,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		},
+		{
+			id: '566',
+			name: 'Nigeria',
+			values: {
+				2019: 5.32,
+				2020: 5.26,
+				2021: 5.18,
+				2022: 5.14,
+				2023: 5.09,
+				2024: null,
+				2025: null,
+				2026: null,
+				2027: null
+			}
+		}
+	]
+};
+
+export const DATASET: Record<TIndicator, IPopulationData> = {
+	population: mockPopulationData,
+	fertility: mockFertilityData,
+	deathRate: mockDeathRateData,
+	lifeExpectancy: mockLifeExpectancyData
+};
+
+export const COLOR_STEPS: Record<TIndicator, { max: number; color: string }[]> =
+	{
+		population: [
+			{ max: 1_000_000, color: '#16324a' },
+			{ max: 10_000_000, color: '#1c4060' },
+			{ max: 30_000_000, color: '#26517b' },
+			{ max: 60_000_000, color: '#326896' },
+			{ max: 100_000_000, color: '#4784bf' },
+			{ max: 300_000_000, color: '#7eb6e0' }
+		],
+		fertility: [
+			{ max: 1.3, color: '#16324a' },
+			{ max: 1.6, color: '#1c4060' },
+			{ max: 2.1, color: '#26517b' },
+			{ max: 3, color: '#326896' },
+			{ max: 4.5, color: '#4784bf' },
+			{ max: 6, color: '#7eb6e0' }
+		],
+		deathRate: [
+			{ max: 7, color: '#16324a' },
+			{ max: 8.5, color: '#1c4060' },
+			{ max: 10, color: '#26517b' },
+			{ max: 12, color: '#326896' },
+			{ max: 14, color: '#4784bf' },
+			{ max: 18, color: '#7eb6e0' }
+		],
+		lifeExpectancy: [
+			{ max: 60, color: '#16324a' },
+			{ max: 70, color: '#1c4060' },
+			{ max: 75, color: '#26517b' },
+			{ max: 80, color: '#326896' },
+			{ max: 83, color: '#4784bf' },
+			{ max: 86, color: '#7eb6e0' }
+		]
+	};
+
+export const INDICATOR_NOTE: Record<
+	TIndicator,
+	{ label: string; unit: string }
+> = {
+	population: { label: 'Население', unit: 'человек' },
+	fertility: { label: 'Рождаемость (TFR)', unit: 'детей на женщину' },
+	deathRate: { label: 'Коэф. смертности', unit: 'на 1000 человек' },
+	lifeExpectancy: { label: 'Продолжительность жизни', unit: 'лет' }
 };
