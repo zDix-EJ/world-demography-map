@@ -21,6 +21,7 @@ export function HudPanel({ setIndicator, indicator }: Props) {
 				setIndicator={setIndicator}
 			/>
 			<ArrowOpenMenu
+				startWay="right"
 				isOpen={isOpen}
 				setIsOpen={setIsOpen}
 			/>

@@ -34,7 +34,6 @@
 	&.open {
 		transform: rotate(180deg);
 	}
-
 	&:hover {
 		animation: hoverArrow 0.5s ease-out forwards;
 	}

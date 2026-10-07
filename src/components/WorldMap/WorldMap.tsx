@@ -13,9 +13,10 @@ import { COLOR_STEPS, DATASET } from './country.data';
 interface Props {
 	sellectYear: number;
 	indicator: TIndicator;
+	setSelectCountry: (country: ICountry) => void;
 }
 
-export function WorldMap({ sellectYear, indicator }: Props) {
+export function WorldMap({ sellectYear, indicator, setSelectCountry }: Props) {
 	const [isHover, setIsHover] = useState<ICountry | null>(null);
 
 	const colorByPopulation = (population: number | null | undefined) => {
@@ -67,6 +68,9 @@ export function WorldMap({ sellectYear, indicator }: Props) {
 										setIsHover({ id: geo.id, name: geo.properties.name });
 									}}
 									onMouseLeave={() => setIsHover(null)}
+									onClick={() => {
+										setSelectCountry({ id: geo.id, name: geo.properties.name });
+									}}
 								/>
 							))
 					}
