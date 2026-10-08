@@ -1,8 +1,9 @@
 import { TIndicator } from '@/types/data';
+import clsx from 'clsx';
 import { useState } from 'react';
 import { Menu } from '../Menu/Menu';
 import { ArrowOpenMenu } from '../ui/ArrowOpenMenu/ArrowOpenMenu';
-import styles from './HudPanel.module.scss';
+import style from './HudPanel.module.scss';
 
 interface Props {
   indicator: TIndicator;
@@ -10,20 +11,20 @@ interface Props {
 }
 
 export function HudPanel({ setIndicator, indicator }: Props) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-    <div className={styles.hudPanel}>
+    <div className={clsx(style.hudPanel, !isMenuOpen && style.close)}>
       <Menu
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
         indicator={indicator}
         setIndicator={setIndicator}
       />
       <ArrowOpenMenu
         startWay="right"
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
       />
     </div>
   );

@@ -8,6 +8,7 @@ interface Props {
   currentYear: number;
 
   selectCountry: ICountry | null;
+  setSelectCountry: (select: ICountry | null) => void;
 
   indicator: TIndicator;
   setIndicator: (indicator: TIndicator) => void;
@@ -17,6 +18,7 @@ export function HudLayout({
   indicator,
   setIndicator,
   selectCountry,
+  setSelectCountry,
   currentYear
 }: Props) {
   return (
@@ -27,6 +29,7 @@ export function HudLayout({
       />
       <DataCountryPanel
         selectCountry={selectCountry}
+        setSelectCountry={setSelectCountry}
         currentYear={currentYear}
       />
     </div>

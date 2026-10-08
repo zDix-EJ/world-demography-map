@@ -4,11 +4,17 @@
   align-items: center;
   gap: 12px;
 
-  width: 100%;
-
   pointer-events: none;
+
+  transition: transform 0.3s ease;
 
   > * {
     pointer-events: auto;
+  }
+
+  &.close {
+    transform: translateX(
+      -(387px + 12px)
+    ); //TODO: Добавить переменные для широт
   }
 }

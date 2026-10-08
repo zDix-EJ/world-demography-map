@@ -4,7 +4,6 @@
   flex-direction: column;
 
   width: 100%;
-
   height: 100%;
   padding: 8px;
 
@@ -13,6 +12,10 @@
 
   background-color: #0c1b286c;
   backdrop-filter: blur(10px);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease-in;
 
   h2 {
     font-size: 36px;
@@ -26,6 +29,10 @@
     color: #dee2e6;
     text-align: center;
     margin: 6px;
+  }
+
+  &.close {
+    transform: translate(411px); //TODO: Добавить переменные для широт
   }
 }
 

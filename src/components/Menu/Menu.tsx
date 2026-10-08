@@ -1,20 +1,33 @@
 import { TIndicator } from '@/types/data';
+import clsx from 'clsx';
 import { ButtonMenu } from '../ui/ButtonMenu/ButtonMenu';
+import { CrossButton } from '../ui/CrossButton/CrossButton';
 import style from './Menu.module.scss';
 import { MENU_BUTTONS } from './buttons.data';
 
 interface Props {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (isMenuOpen: boolean) => void;
 
   indicator: TIndicator;
   setIndicator: (indicator: TIndicator) => void;
 }
 
-export function Menu({ indicator, setIndicator }: Props) {
+export function Menu({
+  isMenuOpen,
+  setIsMenuOpen,
+  indicator,
+  setIndicator
+}: Props) {
   return (
-    <div className={style.menu}>
-      <h1>Меню</h1>
+    <div className={clsx(style.menu, !isMenuOpen && style.closed)}>
+      <div className={style.header}>
+        <h1>Меню</h1>
+        <CrossButton
+          onClose={() => setIsMenuOpen(false)}
+          alt="Закрыть меню"
+        />
+      </div>
       <hr className={style.separator} />
       <div className={style.buttonBox}>
         <p>Данные на карте</p>

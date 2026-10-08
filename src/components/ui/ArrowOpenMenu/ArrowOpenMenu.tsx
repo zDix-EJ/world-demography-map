@@ -2,27 +2,27 @@ import clsx from 'clsx';
 import style from './ArrowOpenMenu.module.scss';
 
 interface Props {
-  isOpen: boolean;
-  setIsOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
   startWay: 'right' | 'left';
 }
 
-export function ArrowOpenMenu({ isOpen, setIsOpen, startWay }: Props) {
-  const handleOpen = () => setIsOpen((isOpen: boolean) => !isOpen);
+export function ArrowOpenMenu({ isMenuOpen, setIsMenuOpen, startWay }: Props) {
+  const handleOpen = () => setIsMenuOpen(true);
   return (
-    <div
-      className={style.arrowWrapper}
+    <button
+      className={clsx(style.arrowWrapper, isMenuOpen && style.open)}
       onClick={handleOpen}
     >
       <img
-        className={clsx(style.arrowImg, isOpen ? style.open : '')}
+        className={clsx(style.arrowImg)}
         src={
           startWay == 'right'
             ? '/arrow/arrow-right.svg'
             : '/arrow/arrow-left.svg'
         }
-        alt={isOpen ? 'Закрыть меню' : 'Открыть меню'}
+        alt={'Открыть меню'}
       />
-    </div>
+    </button>
   );
 }

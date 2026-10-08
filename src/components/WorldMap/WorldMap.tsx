@@ -13,10 +13,16 @@ import { COLOR_STEPS, DATASET } from './country.data';
 interface Props {
   sellectYear: number;
   indicator: TIndicator;
+  selectCountry: ICountry | null;
   setSelectCountry: (country: ICountry) => void;
 }
 
-export function WorldMap({ sellectYear, indicator, setSelectCountry }: Props) {
+export function WorldMap({
+  sellectYear,
+  indicator,
+  selectCountry,
+  setSelectCountry
+}: Props) {
   const [isHover, setIsHover] = useState<ICountry | null>(null);
 
   const colorByPopulation = (population: number | null | undefined) => {
@@ -42,37 +48,50 @@ export function WorldMap({ sellectYear, indicator, setSelectCountry }: Props) {
           {({ geographies }) =>
             geographies
               .filter((geo: ICurrentCountry) => geo.id !== '010')
-              .map((geo: ICurrentCountry) => (
-                <Geography
-                  className={styles.country}
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill={colorByPopulation(
-                    getDataInYearById(DATASET[indicator], geo, sellectYear)
-                  )}
-                  stroke="#abe4ff"
-                  strokeWidth={0.5}
-                  strokeLinejoin="round"
-                  tabIndex={-1}
-                  cursor={'pointer'}
-                  style={{
-                    default: { outline: 'none' },
-                    hover: {
-                      // fill: '#4784bf',
-                      transform: 'translate(0, -2px)',
-                      strokeWidth: 1.4
-                    },
-                    pressed: { outline: 'none' }
-                  }}
-                  onMouseEnter={() => {
-                    setIsHover({ id: geo.id, name: geo.properties.name });
-                  }}
-                  onMouseLeave={() => setIsHover(null)}
-                  onClick={() => {
-                    setSelectCountry({ id: geo.id, name: geo.properties.name });
-                  }}
-                />
-              ))
+              .map((geo: ICurrentCountry) => {
+                const focus = geo.id === selectCountry?.id;
+
+                return (
+                  <Geography
+                    className={styles.country}
+                    key={geo.rsmKey}
+                    geography={geo}
+                    fill={colorByPopulation(
+                      getDataInYearById(DATASET[indicator], geo, sellectYear)
+                    )}
+                    stroke="#abe4ff"
+                    strokeLinejoin="round"
+                    tabIndex={-1}
+                    cursor={'pointer'}
+                    style={{
+                      default: {
+                        strokeWidth: focus ? 1.4 : 0.5,
+                        transform: focus
+                          ? 'translate(0, -2px)'
+                          : 'translate(0, 0)'
+                      },
+                      hover: {
+                        transform: 'translate(0, -2px)',
+                        strokeWidth: 1.4
+                      },
+                      pressed: {
+                        outline: 'none'
+                      }
+                    }}
+                    onMouseEnter={() => {
+                      setIsHover({ id: geo.id, name: geo.properties.name });
+                    }}
+                    onMouseLeave={() => setIsHover(null)}
+                    onClick={() => {
+                      setSelectCountry({
+                        id: geo.id,
+                        name: geo.properties.name
+                      });
+                    }}
+                    onFocus={() => {}}
+                  />
+                );
+              })
           }
         </Geographies>
       </ComposableMap>

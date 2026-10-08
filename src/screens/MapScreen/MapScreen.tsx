@@ -22,11 +22,13 @@ export function MapScreen({}: Props) {
         indicator={indicator}
         setIndicator={setIndicator}
         selectCountry={selectCountry}
+        setSelectCountry={setSelectCountry}
         currentYear={year}
       />
       <WorldMap
         indicator={indicator}
         sellectYear={year}
+        selectCountry={selectCountry}
         setSelectCountry={setSelectCountry}
       />
       <SocialMedia />

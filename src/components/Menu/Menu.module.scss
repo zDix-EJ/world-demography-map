@@ -13,12 +13,11 @@
   background-color: #0c1b286c;
   backdrop-filter: blur(10px);
 
-  h1 {
-    font-size: 36px;
-    color: #dee2e6;
-    text-align: center;
-    margin: 6px;
-  }
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+
+  position: relative;
 
   p {
     font-size: 24px;
@@ -26,7 +25,26 @@
     text-align: center;
     margin: 6px;
   }
+
+  &.close {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 36px;
+    color: #dee2e6;
+    text-align: center;
+    margin: 6px;
+  }
+}
+
 .separator {
   border: none;
   border-top: 2px solid #dee2e62b;
