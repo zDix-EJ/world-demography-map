@@ -5,30 +5,30 @@ import { HudPanel } from '../HudPanel/HudPanel';
 import style from './HudLayout.module.scss';
 
 interface Props {
-	currentYear: number;
+  currentYear: number;
 
-	selectCountry: ICountry | null;
+  selectCountry: ICountry | null;
 
-	indicator: TIndicator;
-	setIndicator: (indicator: TIndicator) => void;
+  indicator: TIndicator;
+  setIndicator: (indicator: TIndicator) => void;
 }
 
 export function HudLayout({
-	indicator,
-	setIndicator,
-	selectCountry,
-	currentYear
+  indicator,
+  setIndicator,
+  selectCountry,
+  currentYear
 }: Props) {
-	return (
-		<div className={style.hudLayout}>
-			<HudPanel
-				indicator={indicator}
-				setIndicator={setIndicator}
-			/>
-			<DataCountryPanel
-				selectCountry={selectCountry}
-				currentYear={currentYear}
-			/>
-		</div>
-	);
+  return (
+    <div className={style.hudLayout}>
+      <HudPanel
+        indicator={indicator}
+        setIndicator={setIndicator}
+      />
+      <DataCountryPanel
+        selectCountry={selectCountry}
+        currentYear={currentYear}
+      />
+    </div>
+  );
 }

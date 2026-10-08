@@ -11,29 +11,29 @@ import style from './MapScreen.module.scss';
 interface Props {}
 
 export function MapScreen({}: Props) {
-	const [year, setYear] = useState<number>(2019);
-	const [indicator, setIndicator] = useState<TIndicator>('population');
-	const [selectCountry, setSelectCountry] = useState<ICountry | null>(null);
+  const [year, setYear] = useState<number>(2019);
+  const [indicator, setIndicator] = useState<TIndicator>('population');
+  const [selectCountry, setSelectCountry] = useState<ICountry | null>(null);
 
-	return (
-		<div className={style.screen}>
-			<AppHeader />
-			<HudLayout
-				indicator={indicator}
-				setIndicator={setIndicator}
-				selectCountry={selectCountry}
-				currentYear={year}
-			/>
-			<WorldMap
-				indicator={indicator}
-				sellectYear={year}
-				setSelectCountry={setSelectCountry}
-			/>
-			<SocialMedia />
-			<ChangeYears
-				currentYear={year}
-				setYear={setYear}
-			/>
-		</div>
-	);
+  return (
+    <div className={style.screen}>
+      <AppHeader />
+      <HudLayout
+        indicator={indicator}
+        setIndicator={setIndicator}
+        selectCountry={selectCountry}
+        currentYear={year}
+      />
+      <WorldMap
+        indicator={indicator}
+        sellectYear={year}
+        setSelectCountry={setSelectCountry}
+      />
+      <SocialMedia />
+      <ChangeYears
+        currentYear={year}
+        setYear={setYear}
+      />
+    </div>
+  );
 }

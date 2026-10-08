@@ -5,24 +5,24 @@ import { ArrowOpenMenu } from '../ui/ArrowOpenMenu/ArrowOpenMenu';
 import style from './DataCountryPanel.module.scss';
 
 interface Props {
-	currentYear: number;
-	selectCountry: ICountry | null;
+  currentYear: number;
+  selectCountry: ICountry | null;
 }
 
 export function DataCountryPanel({ selectCountry, currentYear }: Props) {
-	const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-	return (
-		<div className={style.panel}>
-			<ArrowOpenMenu
-				startWay="left"
-				isOpen={isOpen}
-				setIsOpen={setIsOpen}
-			/>
-			<Dashboard
-				selectCountry={selectCountry}
-				currentYear={currentYear}
-			/>
-		</div>
-	);
+  return (
+    <div className={style.panel}>
+      <ArrowOpenMenu
+        startWay="left"
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+      <Dashboard
+        selectCountry={selectCountry}
+        currentYear={currentYear}
+      />
+    </div>
+  );
 }

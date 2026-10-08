@@ -1,12 +1,12 @@
 export interface ICountry {
-	id: string;
-	name: string;
+  id: string;
+  name: string;
 }
 
 export interface ICurrentCountry {
-	id: string;
-	properties: {
-		name: string;
-	};
-	rsmKey: string;
+  id: string;
+  properties: {
+    name: string;
+  };
+  rsmKey: string;
 }

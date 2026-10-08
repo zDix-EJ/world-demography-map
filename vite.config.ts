@@ -3,15 +3,15 @@ import path from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [react()],
-	css: {
-		modules: {
-			localsConvention: 'camelCaseOnly'
-		}
-	},
-	resolve: {
-		alias: {
-			'@': path.resolve(__dirname, 'src')
-		}
-	}
+  plugins: [react()],
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly'
+    }
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  }
 });

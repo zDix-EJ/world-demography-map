@@ -18,7 +18,7 @@ export function Menu({ indicator, setIndicator }: Props) {
       <hr className={style.separator} />
       <div className={style.buttonBox}>
         <p>Данные на карте</p>
-        {MENU_BUTTONS.map(button => (
+        {MENU_BUTTONS.map((button) => (
           <ButtonMenu
             buttonIndicator={button.buttonIndicator}
             text={button.text}

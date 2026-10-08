@@ -11,78 +11,78 @@ import { COLOR_STEPS, DATASET } from './country.data';
 //TODO: Определиться с эффектом при наведении, что бы было интуитивно понятно и не вычурно
 
 interface Props {
-	sellectYear: number;
-	indicator: TIndicator;
-	setSelectCountry: (country: ICountry) => void;
+  sellectYear: number;
+  indicator: TIndicator;
+  setSelectCountry: (country: ICountry) => void;
 }
 
 export function WorldMap({ sellectYear, indicator, setSelectCountry }: Props) {
-	const [isHover, setIsHover] = useState<ICountry | null>(null);
+  const [isHover, setIsHover] = useState<ICountry | null>(null);
 
-	const colorByPopulation = (population: number | null | undefined) => {
-		if (population == null) return '#0c1b28';
-		const needStap = COLOR_STEPS[indicator].find(
-			(color) => population < color.max
-		);
-		const color = needStap?.color ?? '#d7f1ff';
-		return color;
-	};
+  const colorByPopulation = (population: number | null | undefined) => {
+    if (population == null) return '#0c1b28';
+    const needStap = COLOR_STEPS[indicator].find(
+      (color) => population < color.max
+    );
+    const color = needStap?.color ?? '#d7f1ff';
+    return color;
+  };
 
-	return (
-		<div className={styles.mapLayout}>
-			<ComposableMap
-				projection="geoNaturalEarth1"
-				projectionConfig={{
-					scale: 170,
-					center: [0, 0]
-				}}
-				style={{ width: '100%', height: '100%' }}
-			>
-				<Geographies geography={geography}>
-					{({ geographies }) =>
-						geographies
-							.filter((geo: ICurrentCountry) => geo.id !== '010')
-							.map((geo: ICurrentCountry) => (
-								<Geography
-									className={styles.country}
-									key={geo.rsmKey}
-									geography={geo}
-									fill={colorByPopulation(
-										getDataInYearById(DATASET[indicator], geo, sellectYear)
-									)}
-									stroke="#abe4ff"
-									strokeWidth={0.5}
-									strokeLinejoin="round"
-									tabIndex={-1}
-									cursor={'pointer'}
-									style={{
-										default: { outline: 'none' },
-										hover: {
-											// fill: '#4784bf',
-											transform: 'translate(0, -2px)',
-											strokeWidth: 1.4
-										},
-										pressed: { outline: 'none' }
-									}}
-									onMouseEnter={() => {
-										setIsHover({ id: geo.id, name: geo.properties.name });
-									}}
-									onMouseLeave={() => setIsHover(null)}
-									onClick={() => {
-										setSelectCountry({ id: geo.id, name: geo.properties.name });
-									}}
-								/>
-							))
-					}
-				</Geographies>
-			</ComposableMap>
-			{isHover ? (
-				<NoteCountryModal
-					indicator={indicator}
-					isHoverCountry={isHover}
-					sellectYear={sellectYear}
-				/>
-			) : null}
-		</div>
-	);
+  return (
+    <div className={styles.mapLayout}>
+      <ComposableMap
+        projection="geoNaturalEarth1"
+        projectionConfig={{
+          scale: 170,
+          center: [0, 0]
+        }}
+        style={{ width: '100%', height: '100%' }}
+      >
+        <Geographies geography={geography}>
+          {({ geographies }) =>
+            geographies
+              .filter((geo: ICurrentCountry) => geo.id !== '010')
+              .map((geo: ICurrentCountry) => (
+                <Geography
+                  className={styles.country}
+                  key={geo.rsmKey}
+                  geography={geo}
+                  fill={colorByPopulation(
+                    getDataInYearById(DATASET[indicator], geo, sellectYear)
+                  )}
+                  stroke="#abe4ff"
+                  strokeWidth={0.5}
+                  strokeLinejoin="round"
+                  tabIndex={-1}
+                  cursor={'pointer'}
+                  style={{
+                    default: { outline: 'none' },
+                    hover: {
+                      // fill: '#4784bf',
+                      transform: 'translate(0, -2px)',
+                      strokeWidth: 1.4
+                    },
+                    pressed: { outline: 'none' }
+                  }}
+                  onMouseEnter={() => {
+                    setIsHover({ id: geo.id, name: geo.properties.name });
+                  }}
+                  onMouseLeave={() => setIsHover(null)}
+                  onClick={() => {
+                    setSelectCountry({ id: geo.id, name: geo.properties.name });
+                  }}
+                />
+              ))
+          }
+        </Geographies>
+      </ComposableMap>
+      {isHover ? (
+        <NoteCountryModal
+          indicator={indicator}
+          isHoverCountry={isHover}
+          sellectYear={sellectYear}
+        />
+      ) : null}
+    </div>
+  );
 }

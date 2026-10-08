@@ -1,42 +1,42 @@
 //Анимация появления
 @keyframes showNote {
-	0% {
-		opacity: 0;
-		transform: translateY(-25px) scale(0.95);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0px) scale(1);
-	}
+  0% {
+    opacity: 0;
+    transform: translateY(-25px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
 }
 
 .wrapper {
-	border: 1.5px solid #abe4ff;
-	border-radius: 12px;
-	background-color: #26517b;
+  border: 1.5px solid #abe4ff;
+  border-radius: 12px;
+  background-color: #26517b;
 
-	padding: 8px 12px;
+  padding: 8px 12px;
 
-	bottom: 152px;
-	left: 50%;
-	position: absolute;
-	z-index: 1;
-	translate: -50%;
+  bottom: 152px;
+  left: 50%;
+  position: absolute;
+  z-index: 1;
+  translate: -50%;
 
-	pointer-events: none;
+  pointer-events: none;
 
-	animation: showNote 0.3s ease forwards;
+  animation: showNote 0.3s ease forwards;
 
-	h1 {
-		text-align: center;
-		font-size: 24px;
-		color: #fdfdfd;
-	}
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #fdfdfd;
+  }
 
-	p {
-		font-size: 18px;
-		text-wrap-mode: wrap;
-		padding: 8px 12px;
-		color: #fdfdfd;
-	}
+  p {
+    font-size: 18px;
+    text-wrap-mode: wrap;
+    padding: 8px 12px;
+    color: #fdfdfd;
+  }
 }

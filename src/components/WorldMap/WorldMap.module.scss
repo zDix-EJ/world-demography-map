@@ -1,18 +1,18 @@
 .mapLayout {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 
-	background-color: #03263c;
+  background-color: #03263c;
 
-	position: relative;
+  position: relative;
 }
 
 .country {
-	&:focus,
-	&:focus-visible {
-		outline: none;
-	}
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
 
-	transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }

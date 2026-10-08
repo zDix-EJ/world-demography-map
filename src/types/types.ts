@@ -1,5 +1,5 @@
 export interface ISocialLink {
-	logo: string;
-	alt: string;
-	url: string;
+  logo: string;
+  alt: string;
+  url: string;
 }

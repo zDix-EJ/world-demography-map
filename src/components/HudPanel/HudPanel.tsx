@@ -5,26 +5,26 @@ import { ArrowOpenMenu } from '../ui/ArrowOpenMenu/ArrowOpenMenu';
 import styles from './HudPanel.module.scss';
 
 interface Props {
-	indicator: TIndicator;
-	setIndicator: (indicator: TIndicator) => void;
+  indicator: TIndicator;
+  setIndicator: (indicator: TIndicator) => void;
 }
 
 export function HudPanel({ setIndicator, indicator }: Props) {
-	const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-	return (
-		<div className={styles.hudPanel}>
-			<Menu
-				isOpen={isOpen}
-				setIsOpen={setIsOpen}
-				indicator={indicator}
-				setIndicator={setIndicator}
-			/>
-			<ArrowOpenMenu
-				startWay="right"
-				isOpen={isOpen}
-				setIsOpen={setIsOpen}
-			/>
-		</div>
-	);
+  return (
+    <div className={styles.hudPanel}>
+      <Menu
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        indicator={indicator}
+        setIndicator={setIndicator}
+      />
+      <ArrowOpenMenu
+        startWay="right"
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+    </div>
+  );
 }
