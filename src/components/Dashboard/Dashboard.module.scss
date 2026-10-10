@@ -1,7 +1,20 @@
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translate(411px); //TODO: Добавить переменные для широт
+  }
+  100% {
+    opacity: 100;
+    transform: translate(0);
+  }
+}
+
 .dashboard {
   display: flex;
   justify-content: space-evenly; //TODO: Мб временно, до завершения компонента
   flex-direction: column;
+
+  animation: show 0.3s ease-in;
 
   width: 100%;
   height: 100%;
@@ -32,6 +45,7 @@
   }
 
   &.close {
+    opacity: 0;
     transform: translate(411px); //TODO: Добавить переменные для широт
   }
 }
