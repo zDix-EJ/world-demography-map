@@ -3,3 +3,8 @@ export interface ISocialLink {
   alt: string;
   url: string;
 }
+
+export interface INavLink {
+  href: string;
+  text: string;
+}

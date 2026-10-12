@@ -1,5 +1,6 @@
 import { ICountry } from '@/types/country';
 import { getDataInYearById } from '@/utils/getDataInYearById';
+import { prettyNumbers } from '@/utils/prettyNumbers';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { CrossButton } from '../ui/CrossButton/CrossButton';
@@ -40,22 +41,31 @@ export function Dashboard({
       <div className={style.infoBox}>
         <p>
           Населенние:{' '}
-          {getDataInYearById(DATASET.population, isShowCountry, currentYear)}
+          {prettyNumbers(
+            getDataInYearById(DATASET.population, isShowCountry, currentYear)
+          )}{' '}
+          ч.
         </p>
         <p>
           Рождаемости на женщину:{' '}
-          {getDataInYearById(DATASET.fertility, isShowCountry, currentYear)}
+          {prettyNumbers(
+            getDataInYearById(DATASET.fertility, isShowCountry, currentYear)
+          )}
         </p>
         <p>
           Коэф.смертности:{' '}
-          {getDataInYearById(DATASET.deathRate, isShowCountry, currentYear)}
+          {prettyNumbers(
+            getDataInYearById(DATASET.deathRate, isShowCountry, currentYear)
+          )}
         </p>
         <p>
           Продолжительность жизни:{' '}
-          {getDataInYearById(
-            DATASET.lifeExpectancy,
-            isShowCountry,
-            currentYear
+          {prettyNumbers(
+            getDataInYearById(
+              DATASET.lifeExpectancy,
+              isShowCountry,
+              currentYear
+            )
           )}
         </p>
       </div>

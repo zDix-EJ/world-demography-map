@@ -1,0 +1,71 @@
+.listLayout {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  color: #dee2e6;
+  background-color: #03263c;
+
+  padding: 0 15%;
+  padding-top: 84px;
+}
+
+.title {
+  padding: 12px 0;
+  font-size: 32px;
+  color: #dee2e6;
+}
+
+.listBox {
+  padding: 0 25px;
+  border: 1.5px solid #dee2e6;
+  border-radius: 12px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.tableList {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  td {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e62b;
+  }
+
+  th:not(:first-child),
+  td:not(:first-child) {
+    text-align: right;
+  }
+
+  th:nth-child(1),
+  td:nth-child(1) {
+    width: 28%;
+    text-align: left;
+  }
+
+  tbody tr {
+    transition:
+      scale 0.3s ease-in-out,
+      background-color 0.5s ease-in;
+  }
+  tbody tr:hover {
+    scale: 1.05;
+    background-color: #26507ba9;
+  }
+}
