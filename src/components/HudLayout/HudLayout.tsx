@@ -1,10 +1,12 @@
 import { ICountry } from '@/types/country';
-import { TIndicator } from '@/types/data';
+import { IPopulationData, TIndicator } from '@/types/data';
 import { DataCountryPanel } from '../DataCountryPanel/DataCountryPanel';
 import { HudPanel } from '../HudPanel/HudPanel';
 import style from './HudLayout.module.scss';
 
 interface Props {
+  fetchData: Record<TIndicator, IPopulationData>;
+
   currentYear: number;
 
   selectCountry: ICountry | null;
@@ -15,6 +17,7 @@ interface Props {
 }
 
 export function HudLayout({
+  fetchData,
   indicator,
   setIndicator,
   selectCountry,
@@ -28,6 +31,7 @@ export function HudLayout({
         setIndicator={setIndicator}
       />
       <DataCountryPanel
+        fetchData={fetchData}
         selectCountry={selectCountry}
         setSelectCountry={setSelectCountry}
         currentYear={currentYear}

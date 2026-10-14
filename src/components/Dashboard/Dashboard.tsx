@@ -1,19 +1,21 @@
 import { ICountry } from '@/types/country';
+import { IPopulationData, TIndicator } from '@/types/data';
 import { getDataInYearById } from '@/utils/getDataInYearById';
 import { prettyNumbers } from '@/utils/prettyNumbers';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { CrossButton } from '../ui/CrossButton/CrossButton';
-import { DATASET } from '../WorldMap/country.data';
 import style from './Dashboard.module.scss';
 
 interface Props {
+  fetchData: Record<TIndicator, IPopulationData>;
   currentYear: number;
   selectCountry: ICountry | null;
   setSelectCountry: (select: ICountry | null) => void;
 }
 
 export function Dashboard({
+  fetchData,
   selectCountry,
   setSelectCountry,
   currentYear
@@ -24,6 +26,19 @@ export function Dashboard({
     if (selectCountry) setIsShow(selectCountry);
   }, [selectCountry]);
   if (!isShowCountry) return null;
+
+  const population = prettyNumbers(
+    getDataInYearById(fetchData.population, isShowCountry, currentYear)
+  );
+  const fertility = prettyNumbers(
+    getDataInYearById(fetchData.fertility, isShowCountry, currentYear)
+  );
+  const deathRate = prettyNumbers(
+    getDataInYearById(fetchData.deathRate, isShowCountry, currentYear)
+  );
+  const lifeExpectancy = prettyNumbers(
+    getDataInYearById(fetchData.lifeExpectancy, isShowCountry, currentYear)
+  );
 
   return (
     <div
@@ -39,35 +54,10 @@ export function Dashboard({
       </div>
       <hr className={style.separator} />
       <div className={style.infoBox}>
-        <p>
-          Населенние:{' '}
-          {prettyNumbers(
-            getDataInYearById(DATASET.population, isShowCountry, currentYear)
-          )}{' '}
-          ч.
-        </p>
-        <p>
-          Рождаемости на женщину:{' '}
-          {prettyNumbers(
-            getDataInYearById(DATASET.fertility, isShowCountry, currentYear)
-          )}
-        </p>
-        <p>
-          Коэф.смертности:{' '}
-          {prettyNumbers(
-            getDataInYearById(DATASET.deathRate, isShowCountry, currentYear)
-          )}
-        </p>
-        <p>
-          Продолжительность жизни:{' '}
-          {prettyNumbers(
-            getDataInYearById(
-              DATASET.lifeExpectancy,
-              isShowCountry,
-              currentYear
-            )
-          )}
-        </p>
+        <p>Населенние: {population != null ? `${population}ч.` : 'Нет данных'}</p>
+        <p>Рождаемости на женщину: {fertility ?? 'Нет данных'}</p>
+        <p>Коэф.смертности: {deathRate ?? 'Нет данных'}</p>
+        <p>Продолжительность жизни: {lifeExpectancy ?? 'Нет данных'}</p>
       </div>
       <hr className={style.separator} />
     </div>

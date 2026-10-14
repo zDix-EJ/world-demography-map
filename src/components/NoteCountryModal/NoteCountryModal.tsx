@@ -1,23 +1,25 @@
 import { ICountry } from '@/types/country';
-import { TIndicator } from '@/types/data';
+import { IPopulationData, TIndicator } from '@/types/data';
 import { getDataInYearById } from '@/utils/getDataInYearById';
 import { prettyNumbers } from '@/utils/prettyNumbers';
-import { DATASET, INDICATOR_NOTE } from '../WorldMap/country.data';
+import { INDICATOR_NOTE } from '../WorldMap/country.data';
 import style from './NoteCountryModal.module.scss';
 
 interface Props {
+  fetchData: Record<TIndicator, IPopulationData>;
   indicator: TIndicator;
   isHoverCountry: ICountry;
   sellectYear: number;
 }
 
 export function NoteCountryModal({
+  fetchData,
   isHoverCountry,
   sellectYear,
   indicator
 }: Props) {
   const data = getDataInYearById(
-    DATASET[indicator],
+    fetchData[indicator],
     isHoverCountry,
     sellectYear
   );
@@ -27,7 +29,11 @@ export function NoteCountryModal({
   return (
     <div className={style.wrapper}>
       <h1>{isHoverCountry.name}</h1>
-      {getDataInYearById(DATASET[indicator], isHoverCountry, sellectYear) ? (
+      {getDataInYearById(
+        fetchData[indicator],
+        isHoverCountry,
+        sellectYear
+      ) ? (
         <p>
           {note.label}: ~{prettyNumbers(data)}
           {note.unit}.

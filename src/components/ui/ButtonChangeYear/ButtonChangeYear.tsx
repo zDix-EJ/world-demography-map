@@ -7,20 +7,28 @@ interface Props {
   text?: string;
   way: CurrentWayButton;
   currentYear: number;
+  minYear: number;
+  maxYear: number;
   setYear: (year: number) => void;
 }
 
-export function ButtonChangeYear({ text, way, currentYear, setYear }: Props) {
-  const howYearNow = new Date().getFullYear();
+export function ButtonChangeYear({
+  text,
+  way,
+  currentYear,
+  minYear,
+  maxYear,
+  setYear
+}: Props) {
   const isDesabledButton =
-    way === 'top' ? currentYear >= howYearNow : currentYear <= 1980;
+    way === 'top' ? currentYear >= maxYear : currentYear <= minYear;
 
   const changeYearButton = () => {
     if (way === 'top') {
-      if (currentYear + 1 > howYearNow) return;
+      if (currentYear + 1 > maxYear) return;
       setYear(currentYear + 1);
     } else if (way === 'down') {
-      if (currentYear - 1 < 1980) return;
+      if (currentYear - 1 < minYear) return;
       setYear(currentYear - 1);
     }
   };

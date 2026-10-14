@@ -8,20 +8,29 @@ interface Props {
 }
 
 export function ChangeYears({ currentYear, setYear }: Props) {
+  const minYear = 1990;
+  const maxYear = new Date().getFullYear();
+
   return (
     <div className={style.changeBar}>
       <ButtonChangeYear
         way="down"
         currentYear={currentYear}
+        minYear={minYear}
+        maxYear={maxYear}
         setYear={setYear}
       />
       <ScrollLine
         currentYear={currentYear}
+        minYear={minYear}
+        maxYear={maxYear}
         setYear={setYear}
       />
       <ButtonChangeYear
         way="top"
         currentYear={currentYear}
+        minYear={minYear}
+        maxYear={maxYear}
         setYear={setYear}
       />
     </div>

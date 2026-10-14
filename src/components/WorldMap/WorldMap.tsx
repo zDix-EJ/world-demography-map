@@ -1,16 +1,17 @@
 import { ICountry, ICurrentCountry } from '@/types/country';
-import { TIndicator } from '@/types/data';
+import { IPopulationData, TIndicator } from '@/types/data';
 import { getDataInYearById } from '@/utils/getDataInYearById';
 import { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import geography from 'world-atlas/countries-110m.json'; // Карта
 import { NoteCountryModal } from '../NoteCountryModal/NoteCountryModal';
 import styles from './WorldMap.module.scss';
-import { COLOR_STEPS, DATASET } from './country.data';
+import { COLOR_STEPS } from './country.data';
 
 //TODO: Определиться с эффектом при наведении, что бы было интуитивно понятно и не вычурно
 
 interface Props {
+  fetchData: Record<TIndicator, IPopulationData>;
   sellectYear: number;
   indicator: TIndicator;
   selectCountry: ICountry | null;
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export function WorldMap({
+  fetchData,
   sellectYear,
   indicator,
   selectCountry,
@@ -57,7 +59,7 @@ export function WorldMap({
                     key={geo.rsmKey}
                     geography={geo}
                     fill={colorByPopulation(
-                      getDataInYearById(DATASET[indicator], geo, sellectYear)
+                      getDataInYearById(fetchData[indicator], geo, sellectYear)
                     )}
                     stroke="#abe4ff"
                     strokeLinejoin="round"
@@ -97,6 +99,7 @@ export function WorldMap({
       </ComposableMap>
       {isHover ? (
         <NoteCountryModal
+          fetchData={fetchData}
           indicator={indicator}
           isHoverCountry={isHover}
           sellectYear={sellectYear}

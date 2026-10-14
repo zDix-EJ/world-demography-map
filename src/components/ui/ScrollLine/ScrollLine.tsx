@@ -2,10 +2,12 @@ import style from './ScrollLine.module.scss';
 
 interface Props {
   currentYear: number;
+  minYear: number;
+  maxYear: number;
   setYear: (year: number) => void;
 }
 
-export function ScrollLine({ currentYear, setYear }: Props) {
+export function ScrollLine({ currentYear, minYear, maxYear, setYear }: Props) {
   const handleChangeYear = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYear(Number(event.target.value));
   };
@@ -22,8 +24,8 @@ export function ScrollLine({ currentYear, setYear }: Props) {
         className={style.line}
         type="range"
         id="changeYear"
-        min={2019}
-        max={2026}
+        min={minYear}
+        max={maxYear}
         step={1}
         value={currentYear}
         onChange={handleChangeYear}
