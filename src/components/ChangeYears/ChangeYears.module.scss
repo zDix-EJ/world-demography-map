@@ -2,9 +2,18 @@
   display: flex;
   gap: 12px;
   align-items: center;
+}
 
+.overlay {
   position: absolute;
   bottom: 86px;
   left: 50%;
   translate: -50%;
+}
+
+.inline {
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
 }

@@ -1,12 +1,12 @@
 import { ICountry, ICurrentCountry } from '@/types/country';
 import { IPopulationData, TIndicator } from '@/types/data';
 import { getDataInYearById } from '@/utils/getDataInYearById';
+import { getIndicatorColor } from '@/utils/getIndicatorColor';
 import { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import geography from 'world-atlas/countries-110m.json'; // Карта
 import { NoteCountryModal } from '../NoteCountryModal/NoteCountryModal';
 import styles from './WorldMap.module.scss';
-import { COLOR_STEPS } from './country.data';
 
 //TODO: Определиться с эффектом при наведении, что бы было интуитивно понятно и не вычурно
 
@@ -26,15 +26,6 @@ export function WorldMap({
   setSelectCountry
 }: Props) {
   const [isHover, setIsHover] = useState<ICountry | null>(null);
-
-  const colorByPopulation = (population: number | null | undefined) => {
-    if (population == null) return '#0c1b28';
-    const needStap = COLOR_STEPS[indicator].find(
-      (color) => population < color.max
-    );
-    const color = needStap?.color ?? '#d7f1ff';
-    return color;
-  };
 
   return (
     <div className={styles.mapLayout}>
@@ -58,8 +49,9 @@ export function WorldMap({
                     className={styles.country}
                     key={geo.rsmKey}
                     geography={geo}
-                    fill={colorByPopulation(
-                      getDataInYearById(fetchData[indicator], geo, sellectYear)
+                    fill={getIndicatorColor(
+                      getDataInYearById(fetchData[indicator], geo, sellectYear),
+                      indicator
                     )}
                     stroke="#abe4ff"
                     strokeLinejoin="round"

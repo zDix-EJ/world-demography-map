@@ -58,6 +58,7 @@ export default function App() {
             path="/list"
             element={
               <ListScreen
+                fetchData={fetchData}
                 year={year}
                 setYear={setYear}
               />

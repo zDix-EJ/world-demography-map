@@ -1,9 +1,11 @@
 import { ICountry } from '@/types/country';
 import { IPopulationData, TIndicator } from '@/types/data';
 import { getDataInYearById } from '@/utils/getDataInYearById';
+import { getIndicatorColor } from '@/utils/getIndicatorColor';
 import { prettyNumbers } from '@/utils/prettyNumbers';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
+import { INDICATOR_NOTE } from '../WorldMap/country.data';
 import { CrossButton } from '../ui/CrossButton/CrossButton';
 import style from './Dashboard.module.scss';
 
@@ -27,18 +29,28 @@ export function Dashboard({
   }, [selectCountry]);
   if (!isShowCountry) return null;
 
-  const population = prettyNumbers(
-    getDataInYearById(fetchData.population, isShowCountry, currentYear)
-  );
-  const fertility = prettyNumbers(
-    getDataInYearById(fetchData.fertility, isShowCountry, currentYear)
-  );
-  const deathRate = prettyNumbers(
-    getDataInYearById(fetchData.deathRate, isShowCountry, currentYear)
-  );
-  const lifeExpectancy = prettyNumbers(
-    getDataInYearById(fetchData.lifeExpectancy, isShowCountry, currentYear)
-  );
+  const stats: { key: TIndicator; value: number | null | undefined }[] = [
+    {
+      key: 'population',
+      value: getDataInYearById(fetchData.population, isShowCountry, currentYear)
+    },
+    {
+      key: 'fertility',
+      value: getDataInYearById(fetchData.fertility, isShowCountry, currentYear)
+    },
+    {
+      key: 'deathRate',
+      value: getDataInYearById(fetchData.deathRate, isShowCountry, currentYear)
+    },
+    {
+      key: 'lifeExpectancy',
+      value: getDataInYearById(
+        fetchData.lifeExpectancy,
+        isShowCountry,
+        currentYear
+      )
+    }
+  ];
 
   return (
     <div
@@ -46,20 +58,42 @@ export function Dashboard({
       onTransitionEnd={() => setIsShow(null)}
     >
       <div className={style.header}>
-        <h2>Полная информация по {isShowCountry.name}</h2>
+        <div className={style.titleBlock}>
+          <p className={style.kicker}>Полная информация</p>
+          <h2>{isShowCountry.name}</h2>
+          <span className={style.year}>{currentYear}</span>
+        </div>
         <CrossButton
           onClose={() => setSelectCountry(null)}
           alt="Закртыть панель с информацией"
         />
       </div>
-      <hr className={style.separator} />
-      <div className={style.infoBox}>
-        <p>Населенние: {population != null ? `${population}ч.` : 'Нет данных'}</p>
-        <p>Рождаемости на женщину: {fertility ?? 'Нет данных'}</p>
-        <p>Коэф.смертности: {deathRate ?? 'Нет данных'}</p>
-        <p>Продолжительность жизни: {lifeExpectancy ?? 'Нет данных'}</p>
-      </div>
-      <hr className={style.separator} />
+      <ul className={style.stats}>
+        {stats.map((stat) => {
+          const note = INDICATOR_NOTE[stat.key];
+          const hasValue = stat.value != null;
+
+          return (
+            <li
+              className={clsx(style.stat, !hasValue && style.statEmpty)}
+              key={stat.key}
+              style={{
+                borderLeftWidth: 3,
+                borderLeftStyle: 'solid',
+                borderLeftColor: getIndicatorColor(stat.value, stat.key)
+              }}
+            >
+              <span className={style.label}>{note.label}</span>
+              <span className={style.value}>
+                {hasValue ? prettyNumbers(stat.value) : '—'}
+              </span>
+              <span className={style.unit}>
+                {hasValue ? note.unit : 'Нет данных'}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
