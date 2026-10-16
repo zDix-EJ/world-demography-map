@@ -79,6 +79,7 @@
     text-align: left;
     font-weight: 500;
     font-size: 24px;
+    cursor: pointer;
   }
 
   td {
@@ -102,6 +103,7 @@
   td:nth-child(1) {
     width: 28%;
     text-align: left;
+    cursor: default;
   }
 
   tbody tr {

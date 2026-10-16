@@ -1,0 +1,82 @@
+.searchBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
+
+  transition: translate 0.5 ease;
+
+  input {
+    min-width: 487px;
+    max-width: 587px;
+    padding: 10px 14px;
+    padding-right: 48px;
+
+    border: 1.5px solid #dee2e6;
+    border-radius: 12px;
+
+    color: #dee2e6;
+
+    outline: none;
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+    }
+
+    &::placeholder {
+      color: #dee2e680;
+    }
+
+    &:focus {
+      border-color: #abe4ff;
+      box-shadow: 0 0 0 2px #abe4ff40;
+    }
+  }
+
+  .inputWrapper {
+    position: relative;
+  }
+
+  .searchButton {
+    padding: 7px;
+    border: 1.5px solid #dee2e6;
+    border-radius: 12px;
+
+    transition:
+      scale 0.2s ease-in,
+      background-color 0.3s ease;
+
+    &:hover {
+      background-color: #4784bf;
+      scale: 1.05;
+    }
+
+    &:active {
+      scale: 0.95;
+      background-color: #0d3454;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .deleteButton {
+    top: 50%;
+    right: 12px;
+    translate: 0 -50%;
+
+    position: absolute;
+
+    transition: opacity 0.2s ease;
+
+    opacity: 1;
+
+    &.isHidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
