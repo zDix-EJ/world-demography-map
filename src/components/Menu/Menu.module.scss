@@ -1,10 +1,19 @@
 .menu {
   display: flex;
-  justify-content: space-evenly; //TODO: Мб временно, до завершения компонента
   flex-direction: column;
+  justify-content: space-evenly;
 
   width: 387px;
   height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   padding: 8px;
 
   border-radius: 12px;
@@ -24,6 +33,23 @@
     color: #dee2e6;
     text-align: center;
     margin: 6px;
+  }
+
+  .source {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #7eb6e0;
+    margin: 0 6px 6px;
+
+    a {
+      color: #abe4ff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        color: #d7f1ff;
+      }
+    }
   }
 
   &.close {
@@ -57,4 +83,11 @@
   align-items: center;
   flex-direction: column;
   gap: 8px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px;
 }

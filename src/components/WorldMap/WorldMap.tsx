@@ -4,11 +4,9 @@ import { getDataInYearById } from '@/utils/getDataInYearById';
 import { getIndicatorColor } from '@/utils/getIndicatorColor';
 import { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import geography from 'world-atlas/countries-110m.json'; // Карта
+import geography from 'world-atlas/countries-110m.json';
 import { NoteCountryModal } from '../NoteCountryModal/NoteCountryModal';
 import styles from './WorldMap.module.scss';
-
-//TODO: Определиться с эффектом при наведении, что бы было интуитивно понятно и не вычурно
 
 interface Props {
   fetchData: Record<TIndicator, IPopulationData>;

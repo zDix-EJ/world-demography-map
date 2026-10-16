@@ -11,20 +11,11 @@
   color: #a7d9ff;
 }
 
-.line {
-  //Сброс стилей range
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  background: transparent;
-  cursor: pointer;
-}
-
 @mixin thumb-styles {
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  background: #0c1b28; // Синий цвет
+  background: #0c1b28;
   border: 2px solid #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.1s ease;
@@ -53,7 +44,6 @@
     outline: none;
   }
 
-  // Стили для бегунка (Thumb)
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -65,7 +55,6 @@
     @include thumb-styles;
   }
 
-  // Стили для дорожки (Track)
   &::-webkit-slider-runnable-track {
     @include track-styles;
   }

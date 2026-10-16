@@ -1,8 +1,11 @@
 .hudPanel {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   gap: 12px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
 
   pointer-events: none;
 
@@ -12,9 +15,11 @@
     pointer-events: auto;
   }
 
+  > :last-child {
+    align-self: center;
+  }
+
   &.close {
-    transform: translateX(
-      -(387px + 12px)
-    ); //TODO: Добавить переменные для широт
+    transform: translateX(-(387px + 12px));
   }
 }

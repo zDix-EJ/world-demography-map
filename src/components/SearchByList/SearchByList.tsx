@@ -22,7 +22,7 @@ export function SearchByList({ search, setSearch }: Props) {
             type="search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Введите название страны на (пока что) английском"
+            placeholder="Введите название страны на английском"
           />
           <button
             className={clsx(style.deleteButton, !search && style.isHidden)}

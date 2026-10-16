@@ -1,10 +1,42 @@
 @import './font.css';
 
+:root {
+  --hud-top: 87px;
+  --hud-side: 24px;
+  --hud-bottom: 168px;
+  --year-bottom: 86px;
+  --note-bottom: 152px;
+  --dock-bottom: 36px;
+}
+
+@media (max-height: 820px) {
+  :root {
+    --hud-top: 64px;
+    --hud-side: 16px;
+    --hud-bottom: 128px;
+    --year-bottom: 68px;
+    --note-bottom: 118px;
+    --dock-bottom: 16px;
+  }
+}
+
+@media (max-height: 640px) {
+  :root {
+    --hud-top: 52px;
+    --hud-bottom: 108px;
+    --year-bottom: 56px;
+    --note-bottom: 96px;
+    --dock-bottom: 8px;
+  }
+}
+
 html,
 body,
 #root {
   height: 100%;
+  height: 100dvh;
   margin: 0;
+  background-color: #03263c;
 }
 
 body {

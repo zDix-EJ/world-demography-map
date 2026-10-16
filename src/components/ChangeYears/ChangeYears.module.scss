@@ -6,7 +6,7 @@
 
 .overlay {
   position: absolute;
-  bottom: 86px;
+  bottom: var(--year-bottom);
   left: 50%;
   translate: -50%;
 }

@@ -1,7 +1,7 @@
 .navMenu {
   position: absolute;
-  right: 24px;
-  bottom: 36px;
+  right: var(--hud-side);
+  bottom: var(--dock-bottom);
   z-index: 1;
 
   display: flex;

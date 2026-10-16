@@ -65,7 +65,7 @@ export function Dashboard({
         </div>
         <CrossButton
           onClose={() => setSelectCountry(null)}
-          alt="Закртыть панель с информацией"
+          alt="Закрыть панель с информацией"
         />
       </div>
       <ul className={style.stats}>

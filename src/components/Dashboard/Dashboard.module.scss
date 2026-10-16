@@ -1,7 +1,7 @@
 @keyframes show {
   0% {
     opacity: 0;
-    transform: translate(40px); //TODO: Добавить переменные для широт
+    transform: translate(40px);
   }
   100% {
     opacity: 1;
@@ -18,6 +18,8 @@
 
   width: 100%;
   height: 100%;
+  min-height: 0;
+  overflow: hidden;
   padding: 20px 16px 16px;
 
   border-radius: 12px;
@@ -32,7 +34,7 @@
 
   &.close {
     opacity: 0;
-    transform: translate(411px); //TODO: Добавить переменные для широт
+    transform: translate(411px);
   }
 }
 
@@ -84,6 +86,12 @@
   list-style: none;
   overflow-y: auto;
   min-height: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .stat {
@@ -93,7 +101,6 @@
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #dee2e61f;
-  // border-left: 3px solid #abe4ff;
   background-color: #0c1b2866;
 }
 

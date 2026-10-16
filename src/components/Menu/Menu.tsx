@@ -44,6 +44,17 @@ export function Menu({
       <hr className={style.separator} />
       <div className={style.info}>
         <p>Источники</p>
+        <p className={style.source}>
+          Показатели —{' '}
+          <a
+            href="https://data.worldbank.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            World Bank Open Data
+          </a>{' '}
+          (WDI).
+        </p>
       </div>
     </div>
   );
